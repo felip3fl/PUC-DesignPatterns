@@ -2,7 +2,8 @@ package structural.composite;
 import java.util.*;
 public class Composite extends Component {
   String name = null;
-  List children = new ArrayList();
+  @SuppressWarnings("rawtypes")
+List children = new ArrayList();
   public Composite(String parm) {
     this.name = parm;
     System.out.println(parm.trim()+" constructed.");
@@ -14,7 +15,8 @@ public class Composite extends Component {
     catch (IndexOutOfBoundsException ioobe) {child = null;}
     return child;
   }
-  public void add(Component parm) {
+  @SuppressWarnings("unchecked")
+public void add(Component parm) {
     try {
       System.out.println("Adding "+parm.getName().trim()+" to "+this.getName().trim());
       children.add(parm);
@@ -28,7 +30,8 @@ public class Composite extends Component {
     catch (Exception e) {System.out.println(e.getMessage());}
   }
   public void display() {
-    Iterator iterator = children.iterator();
+    @SuppressWarnings("rawtypes")
+	Iterator iterator = children.iterator();
     System.out.println(this.getName()
       +(iterator.hasNext()?" with the following: ":" that is bare."));
     while (iterator.hasNext()) {((Component) iterator.next()).display();}

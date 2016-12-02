@@ -1,8 +1,10 @@
 package structural.flyweight;
 import java.util.*;
 public class FlyweightFactory {
-  private static Map map = new HashMap();
-  public static FlyweightIF getFlyweight(String parm) {
+  @SuppressWarnings("rawtypes")
+private static Map map = new HashMap();
+  @SuppressWarnings("unchecked")
+public static FlyweightIF getFlyweight(String parm) {
     // Return the Flyweight if it exists,
     // or create it if it doesn't.
     FlyweightIF flyweight = null;
